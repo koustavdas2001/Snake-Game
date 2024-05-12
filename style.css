@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 .body {
     background: url(img/bg.png);
     min-height: 100vh;
-    background-size: 100vw 100vh;
-    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,13 +17,16 @@
 
 .board {
     background: linear-gradient(#dad7cd, #a3b18a);
-    width: 90vmin;
-    height: 90vmin;
-    border: 10px solid #3a5a40;
+    max-width: 90vmin;
+    max-height: 90vmin;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 5px solid #3a5a40;
     display: grid;
-    grid-template-columns: repeat(18,1fr);
-    grid-template-rows: repeat(18,1fr);
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(18, 1fr);
     border-radius: 20px;
+    position: relative;
 }
 
 .head {
@@ -31,33 +35,44 @@
     transform: scale(1.1);
     border-radius: 15px;
 }
+
 .snake {
     background-color: #588157;
-    border: .25vmin solid #2b2d42;
+    border: 1px solid #2b2d42;
     border-radius: 50px;
 }
+
 .food {
     background: linear-gradient(#ffba08, #e85d04);
-    border: .25vmin solid #03045e;
+    border: 1px solid #03045e;
     border-radius: 15px;
 }
 
-.scoreBox {
+.scoreBox,
+.hiScoreBox {
     font-family: 'Pixelify Sans', sans-serif;
-    position: absolute;
-    color: #3a5a40;
-    top: 8vw;
-    right: 8vw;
-    font-size: 40px;
+    color: white;
+    font-size: 2vw;
     font-weight: bold;
+    position: absolute;
+    top: 2%;
+    right: 2%;
 }
 
 .hiScoreBox {
-    font-family: 'Pixelify Sans', sans-serif;
-    position: absolute;
-    color: #3a5a40;
-    top: 11vw;
-    right: 7vw;
-    font-size: 40px;
-    font-weight: bold;
+    top: calc(2% + 2vw); /* Adjusted position for high score */
+}
+
+/* Media Queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .scoreBox,
+    .hiScoreBox {
+        font-size: 4vw;
+        top: 4%;
+        right: 4%;
+    }
+
+    .hiScoreBox {
+        top: calc(4% + 4vw); /* Adjusted position for high score */
+    }
 }
